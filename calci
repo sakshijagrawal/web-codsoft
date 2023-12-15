@@ -1,0 +1,116 @@
+------------------------------------------------HTML-----------------------------------------------------------
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Simple Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="calculator">
+
+            <input type="text" id="display" readonly>
+            <table>
+                <tr>
+                    <td><input type="button" value="7" onclick="appendToDisplay('7')"></td>
+                    <td><input type="button" value="8" onclick="appendToDisplay('8')"></td>
+                    <td><input type="button" value="9" onclick="appendToDisplay('9')"></td>
+                    <td><input type="button" value="/" onclick="appendToDisplay('/')"></td>
+                </tr>
+
+                <tr>
+                    <td><input type="button" value="4" onclick="appendToDisplay('4')"></td>
+                    <td><input type="button" value="5" onclick="appendToDisplay('5')"></td>
+                    <td><input type="button" value="6" onclick="appendToDisplay('6')"></td>
+                    <td><input type="button" value="*" onclick="appendToDisplay('*')"></td>
+                </tr>
+
+                <tr>
+                    <td><input type="button" value="1" onclick="appendToDisplay('1')"></td>
+                    <td><input type="button" value="2" onclick="appendToDisplay('2')"></td>
+                    <td><input type="button" value="3" onclick="appendToDisplay('3')"></td>
+                    <td><input type="button" value="-" onclick="appendToDisplay('-')"></td>
+                </tr>
+
+                <tr>
+                    <td><input type="button" value="0" onclick="appendToDisplay('0')"></td>
+                    <td><input type="button" value="." onclick="appendToDisplay('.')"></td>
+                    <td><input type="button" value="=" onclick="calculate()"></td>
+                    <td><input type="button" value="+" onclick="appendToDisplay('+')"></td>
+                </tr>
+
+                <tr>
+                    <td colspan="4"><input type="button" value="C" onclick="clearDisplay()"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+
+</html>
+
+------------------------------------CSS--------------------------------------
+.calculator {
+    width: 300px;
+    height: 400px;
+    margin: 0 auto;
+    padding: 10px;
+    border: 1px solid #96112777;
+    background-color: whitesmoke;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 10px 10px 10px 10px gray;
+}
+
+input[type="text"] {
+    width: 50%;
+    margin-left: 88px;
+    text-align: right;
+    padding: 10px;
+    margin-bottom: 5 px;
+}
+input[type="button"]{
+    width: 50px;
+    height: 50px;
+    font-size: 25px;
+    margin: 7px;
+    background: white;
+    border: 2px solid black;
+    border-radius: 30px;
+    box-shadow: 2px 2px black;
+
+}
+input[type="button"]:hover{
+    background-color: rgb(226, 43, 162);
+    color: white;
+}
+.container{
+background-image: linear-gradient(rgb(225, 192, 229),rgb(199, 190, 199), rgb(237, 226, 233),rgb(236, 175, 227));
+height: 500px;
+width: 400px;
+align-items: center;
+margin-left: 450px;
+padding-top: 100px;
+}
+
+-------------------------------------------JAVASCRIPT---------------------------------------------------
+
+function appendToDisplay(value) {
+    document.getElementById('display').value += value;
+}
+
+function calculate() {
+    try {
+        document.getElementById('display').value = eval(document.getElementById('display').value);
+    } catch (e) {
+        document.getElementById('display').value = 'Error';
+    }
+}
+function clearDisplay() {
+    document.getElementById('display').value = '';
+}
